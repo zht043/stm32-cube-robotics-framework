@@ -11,6 +11,5 @@
                 }
             }
         ]
-    },
-    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+    }
 }
