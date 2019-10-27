@@ -50,3 +50,58 @@
 }
 ```
 
+
+
+
+
+## Windows
+
+### c_cpp_properties
+
+```json
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "STM32F446xx",
+                "USE_HAL_DRIVER"
+            ],
+            "compilerPath": "\"C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/bin/arm-none-eabi-gcc.exe\"",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
+```
+
+
+
+### settings.json
+
+```json
+{
+    "C_Cpp.dimInactiveRegions": true,
+    "C_Cpp.enhancedColorization": "Enabled",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "entity.name.type",
+                "settings": {
+                    "foreground": "#3b99f1",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    }
+}
+```
+
