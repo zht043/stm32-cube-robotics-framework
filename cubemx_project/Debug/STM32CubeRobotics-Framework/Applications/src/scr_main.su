@@ -1,9 +1,9 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-scr_gpio.h:15:5:GPIO::GPIO(GPIO_TypeDef*, uint16_t)	24	static
-scr_gpio.h:19:5:GPIO::~GPIO()	16	static
-scr_main.cpp:11:6:void setup()	4	static
-scr_main.cpp:15:6:void loop0()	8	static
-scr_main.cpp:28:6:void loop1()	4	static
-scr_main.cpp:30:1:void __static_initialization_and_destruction_0(int, int)	16	static
-scr_main.cpp:30:1:cpp)	8	static
-scr_main.cpp:30:1:cpp)	8	static
+scr_gpio.h:16:5:GPIO::GPIO(GPIO_TypeDef*, uint16_t)	24	static
+scr_gpio.h:20:5:GPIO::~GPIO()	16	static
+scr_main.cpp:7:6:void setup()	4	static
+scr_main.cpp:11:6:void loop0()	8	static
+scr_main.cpp:20:6:void loop1()	8	static
+scr_main.cpp:23:1:void __static_initialization_and_destruction_0(int, int)	16	static
+scr_main.cpp:23:1:cpp)	8	static
+scr_main.cpp:23:1:cpp)	8	static

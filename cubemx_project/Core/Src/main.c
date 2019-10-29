@@ -137,7 +137,7 @@ int main(void)
   /* definition and creation of myTask02 */
   const osThreadAttr_t myTask02_attributes = {
     .name = "myTask02",
-    .priority = (osPriority_t) osPriorityLow,
+    .priority = (osPriority_t) osPriorityNormal,
     .stack_size = 128
   };
   myTask02Handle = osThreadNew(StartTask02, NULL, &myTask02_attributes);
@@ -349,7 +349,7 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
     loop0();
-    osDelay(1);
+    //osDelay(1);
   }
   /* USER CODE END 5 */ 
 }
@@ -368,7 +368,7 @@ void StartTask02(void *argument)
   for(;;)
   {
     loop1();
-    osDelay(1);
+    //osDelay(1);
   }
   /* USER CODE END StartTask02 */
 }

@@ -39,3 +39,4 @@
 "STM32CubeRobotics-Framework/Applications/src/scr_main.o"
 "STM32CubeRobotics-Framework/Drivers/src/scr.o"
 "STM32CubeRobotics-Framework/Drivers/src/scr_gpio.o"
+"STM32CubeRobotics-Framework/Drivers/src/scr_systick.o"

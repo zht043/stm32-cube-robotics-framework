@@ -8,6 +8,7 @@ class GPIO {
 private:
     GPIO_TypeDef *GPIOx;
     uint16_t GPIO_Pin;
+    logic_level curr_level = Low;
 
 
 
@@ -18,8 +19,9 @@ public:
     }
     ~GPIO() {}
 
-    void gpioWrite(logic_level Bit);
-    logic_level gpioRead(void);
+    void write(logic_level level);
+    logic_level read(void);
+    void toggle(void);
 
 };
 
