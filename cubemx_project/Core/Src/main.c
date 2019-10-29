@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "scr_main.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,6 +103,8 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
+
+  setup();
 
   /* USER CODE END 2 */
 
@@ -351,6 +354,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+    loop0();
     osDelay(1);
   }
   /* USER CODE END 5 */ 
@@ -369,6 +373,7 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
+    loop1();
     osDelay(1);
   }
   /* USER CODE END StartTask02 */
