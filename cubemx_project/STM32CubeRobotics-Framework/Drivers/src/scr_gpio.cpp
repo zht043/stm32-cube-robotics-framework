@@ -1,5 +1,6 @@
 #include "scr_gpio.h"
 
+using namespace scr;
 
 void GPIO::write(logic_level level) {
     if(level == High)  {

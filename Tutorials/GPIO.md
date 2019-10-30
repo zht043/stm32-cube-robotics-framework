@@ -22,6 +22,7 @@ void toggle(void);
 
 ```c++
 #include "scr_main.h"
+using namespace scr;
 
 GPIO button(USER_Btn_GPIO_Port, USER_Btn_Pin);
 GPIO blue_led(LD2_GPIO_Port, LD2_Pin);

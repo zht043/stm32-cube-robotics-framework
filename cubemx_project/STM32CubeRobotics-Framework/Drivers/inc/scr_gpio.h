@@ -4,26 +4,28 @@
 
 #include "scr_dependancy.h"
 
-class GPIO {
-private:
-    GPIO_TypeDef *GPIOx;
-    uint16_t GPIO_Pin;
-    logic_level curr_level = Low;
+namespace scr {
+    class GPIO {
+    private:
+        GPIO_TypeDef *GPIOx;
+        uint16_t GPIO_Pin;
+        logic_level curr_level = Low;
 
 
 
-public:
-    GPIO(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
-    	this->GPIOx = GPIOx;
-    	this->GPIO_Pin = GPIO_Pin;
-    }
-    ~GPIO() {}
+    public:
+        GPIO(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+            this->GPIOx = GPIOx;
+            this->GPIO_Pin = GPIO_Pin;
+        }
+        ~GPIO() {}
 
-    void write(logic_level level);
-    logic_level read(void);
-    void toggle(void);
+        void write(logic_level level);
+        logic_level read(void);
+        void toggle(void);
 
-};
+    };
+}
 
 
 
