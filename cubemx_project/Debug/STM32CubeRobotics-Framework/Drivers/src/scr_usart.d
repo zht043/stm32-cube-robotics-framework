@@ -1,7 +1,6 @@
-STM32CubeRobotics-Framework/Drivers/src/scr.o: \
- ../STM32CubeRobotics-Framework/Drivers/src/scr.cpp \
- C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr.h \
- C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_gpio.h \
+STM32CubeRobotics-Framework/Drivers/src/scr_usart.o: \
+ ../STM32CubeRobotics-Framework/Drivers/src/scr_usart.cpp \
+ C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_usart.h \
  C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_dependancy.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
@@ -43,14 +42,9 @@ STM32CubeRobotics-Framework/Drivers/src/scr.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_systick.h \
- C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_usart.h \
- ../Core/Inc/main.h \
- C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_dependancy.h
+ C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_systick.h
 
-C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr.h:
-
-C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_gpio.h:
+C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_usart.h:
 
 C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_dependancy.h:
 
@@ -135,9 +129,3 @@ C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM
 ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
 
 C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_systick.h:
-
-C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_usart.h:
-
-../Core/Inc/main.h:
-
-C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_dependancy.h:

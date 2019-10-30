@@ -38,8 +38,27 @@ extern "C" {
 
 /*========================================================================*/
 
+namespace scr {
+    enum logic_level {High, Low};
+    enum periph_status {	
+        NotReady,
+        Initialized,
+        InProgress,
+        Completed,
+        TimeOut,
+        Error
+    };
+    enum periph_mode {
+        Polling,
+        Interrupt,
+        DMA // direct memory access
+    };
+}
 
-enum logic_level {High, Low};
 
+
+__weak void throwException(std::string str) {
+    UNUSED(str);
+}
 
 #endif

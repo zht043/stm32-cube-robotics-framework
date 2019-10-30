@@ -45,6 +45,7 @@ STM32CubeRobotics-Framework/Applications/src/scr_main.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
  C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_systick.h \
+ C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_usart.h \
  ../Core/Inc/main.h
 
 C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Applications/inc/scr_main.h:
@@ -136,5 +137,7 @@ C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM
 ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
 
 C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_systick.h:
+
+C:/Users/zhang/Documents/GitHub/stm32-cube-robotics-framework/cubemx_project/STM32CubeRobotics-Framework/Drivers/inc/scr_usart.h:
 
 ../Core/Inc/main.h:

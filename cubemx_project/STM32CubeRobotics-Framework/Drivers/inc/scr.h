@@ -3,6 +3,7 @@
 
 #include "scr_gpio.h"
 #include "scr_systick.h"
+#include "scr_usart.h"
 
 
 //====================================================================//
