@@ -18,29 +18,39 @@ USART serial(&huart3);
 
 
 
-char fuck[6] = "FUCK\n";
 void setup(void) {
-	HAL_UART_Transmit_DMA(&huart3, (uint8_t*)fuck, 3);
-	delay(1000, HAL);
+
 }
 
 void loop0(void) {
-	/*
-
-    if(button.read() == High) {
+   /* if(button.read() == High) {
         blue_led.write(High);
     }
     else {
         blue_led.write(Low);
-    }*/
-	osDelay(1);
+    }
+    */
+
+   while (true) {
+       delay(500);
+       blue_led.write(High);
+       red_led.write(Low);
+       delay(300);
+       blue_led.write(Low);
+       red_led.write(High);
+   }
 }
 
 
 
 void loop1(void) {
 
+    for (int i=0; i<10; ++i){
+        serial << 'c' << 123 << 12.31f << "\n\r";
+    }
+    while(1);
 
+/*
 	vector<int> vec;
 	vector<int> *vec2 = new vector<int>;
 
@@ -49,23 +59,15 @@ void loop1(void) {
     ostr << "Hello" << ' ' << "World" << 123 <<endl;
 
     string hw = ostr.str();
-   /* serial.transmit(hw, Interrupt);
-    while(serial.get_tx_status() != Completed);*/
+    serial.transmit(hw, Interrupt);
+    while(serial.get_tx_status() != Completed);
 
-/*
+
     std::string newline = "\n\r";
     std::string space = " ";
     serial.transmit(newline);
-*/
 
-
-//    serial.transmit(fuck, DMA);
-
-    osDelay(100);
-
-    serial.transmit(hw);
-
-    /*
+    
 	for(int i = 0; i < 10; i++) {
         vec.push_back(i);
         vec2->push_back(10 - i);
@@ -87,5 +89,6 @@ void loop1(void) {
 
         serial.transmit(newline);
 		delay(500);
-	}*/
+	}
+    */
 }

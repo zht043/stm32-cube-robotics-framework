@@ -1,5 +1,5 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-scr_dependancy.h:69:13:void throwException(std::__cxx11::string)	16	static
+scr_dependancy.h:70:13:void throwException(std::__cxx11::string)	16	static
 scr_systick.cpp:6:10:uint32_t scr::millis()	8	static
 scr_systick.cpp:9:10:uint32_t scr::micros()	16	static
 scr_systick.cpp:16:6:void scr::delay_us(uint32_t)	24	static

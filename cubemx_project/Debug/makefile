@@ -59,7 +59,7 @@ all: cubemx_project.elf secondary-outputs
 
 # Tool invocations
 cubemx_project.elf: $(OBJS) $(USER_OBJS) C:\Users\zhang\Documents\GitHub\stm32-cube-robotics-framework\cubemx_project\STM32F446ZETX_FLASH.ld
-	arm-none-eabi-g++ -o "cubemx_project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\zhang\Documents\GitHub\stm32-cube-robotics-framework\cubemx_project\STM32F446ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cubemx_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "cubemx_project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\zhang\Documents\GitHub\stm32-cube-robotics-framework\cubemx_project\STM32F446ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cubemx_project.map" -Wl,--gc-sections -static  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

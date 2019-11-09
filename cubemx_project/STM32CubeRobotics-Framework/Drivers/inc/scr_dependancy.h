@@ -38,6 +38,7 @@ extern "C" {
 #include <atomic>
 #include <cstring>
 #include <vector>
+#include <sstream>
 
 /*========================================================================*/
 

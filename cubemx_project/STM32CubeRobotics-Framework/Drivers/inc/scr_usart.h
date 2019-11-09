@@ -42,7 +42,7 @@ namespace scr {
 
         char* receive(uint16_t size, periph_mode mode = Polling);
 
-        UART_HandleTypeDef *get_huartx(void) {
+        inline UART_HandleTypeDef *get_huartx(void) {
             return huartx;
         }
 
@@ -69,11 +69,22 @@ namespace scr {
         inline void set_rx_status(periph_status status) {
             rx_status = status;
         }
+
+        template<typename T>
+        USART& operator<<(const T& input) {
+            std::stringstream newStream;
+            newStream << input;
+            std::string str = newStream.str();
+            transmit(str);
+            return *this;
+        }
+
+
     };
 }
 
 
-__weak void USART_TxCplt_IT_Task(scr::USART* instance);
+__weak void usart_transmit_completed_interrupt_task(scr::USART* instance);
 extern "C" void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart);
 
 

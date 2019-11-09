@@ -106,14 +106,13 @@ void USART::transmit(byte_t byte, periph_mode mode) {
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {    
 	for(uint32_t i = 0; i < num_usarts; i++) {
 		if(active_usarts[i]->get_huartx() == huart) {
-            //usart_transmit_completed_interrupt_task(active_usarts[i]);
+            usart_transmit_completed_interrupt_task(active_usarts[i]);
             active_usarts[i]->set_tx_status(Completed);
 		}
 	}
 }
 
 
-
-__weak void USART_TxCplt_IT_Task(USART* instance) {
+__weak void usart_transmit_completed_interrupt_task(USART* instance) {
     UNUSED(instance);
 }

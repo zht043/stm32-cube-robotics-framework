@@ -51,8 +51,9 @@ PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
 typedef StaticTask_t osStaticThreadDef_t;
 osThreadId_t defaultTaskHandle;
-uint32_t defaultTaskBuffer[ 5000 ];
+uint32_t defaultTaskBuffer[ 3000 ];
 osStaticThreadDef_t defaultTaskControlBlock;
+osThreadId_t myTask02Handle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -60,11 +61,12 @@ osStaticThreadDef_t defaultTaskControlBlock;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
-static void MX_DMA_Init(void);
 static void MX_CAN1_Init(void);
 void StartDefaultTask(void *argument);
+void StartTask02(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -104,9 +106,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
-  MX_DMA_Init();
   MX_CAN1_Init();
   /* USER CODE BEGIN 2 */
 
@@ -144,6 +146,14 @@ int main(void)
     .priority = (osPriority_t) osPriorityNormal,
   };
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* definition and creation of myTask02 */
+  const osThreadAttr_t myTask02_attributes = {
+    .name = "myTask02",
+    .priority = (osPriority_t) osPriorityNormal,
+    .stack_size = 3000
+  };
+  myTask02Handle = osThreadNew(StartTask02, NULL, &myTask02_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -404,10 +414,29 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    loop1();
+    loop0();
     //osDelay(1);
   }
   /* USER CODE END 5 */ 
+}
+
+/* USER CODE BEGIN Header_StartTask02 */
+/**
+* @brief Function implementing the myTask02 thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask02 */
+void StartTask02(void *argument)
+{
+  /* USER CODE BEGIN StartTask02 */
+  /* Infinite loop */
+  for(;;)
+  {
+    loop1();
+    //osDelay(1);
+  }
+  /* USER CODE END StartTask02 */
 }
 
 /**
