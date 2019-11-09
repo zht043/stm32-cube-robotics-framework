@@ -1,9 +1,9 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-scr_dependancy.h:60:13:void throwException(std::__cxx11::string)	16	static
-scr.cpp:14:7:void* operator new(size_t)	24	static
-scr.cpp:21:7:void* operator new [](size_t)	24	static
-scr.cpp:28:6:void operator delete(void*)	16	static
-scr.cpp:33:6:void operator delete [](void*)	16	static
-scr.cpp:36:1:void __static_initialization_and_destruction_0(int, int)	16	static
-scr.cpp:36:1:cpp)	8	static
-scr.cpp:36:1:cpp)	8	static
+scr_dependancy.h:69:13:void throwException(std::__cxx11::string)	16	static
+scr.cpp:18:7:void* operator new(size_t)	24	static
+scr.cpp:25:7:void* operator new [](size_t)	24	static
+scr.cpp:32:6:void operator delete(void*)	16	static
+scr.cpp:38:6:void operator delete [](void*)	16	static
+scr.cpp:42:1:void __static_initialization_and_destruction_0(int, int)	16	static
+scr.cpp:42:1:cpp)	8	static
+scr.cpp:42:1:cpp)	8	static

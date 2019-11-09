@@ -35,12 +35,16 @@ extern "C" {
     /*C++ includes*/
 
 #include <iostream>
+#include <atomic>
+#include <cstring>
+#include <vector>
 
 /*========================================================================*/
 
 namespace scr {
-    enum logic_level {High, Low};
-    enum periph_status {	
+    enum logic_level : int {High, Low};
+    enum periph_status : int
+    {	
         NotReady,
         Initialized,
         InProgress,
@@ -53,8 +57,13 @@ namespace scr {
         Interrupt,
         DMA // direct memory access
     };
+    enum delay_mode {
+        HAL,
+        RTOS
+    };
 }
 
+typedef uint8_t byte_t;
 
 
 __weak void throwException(std::string str) {

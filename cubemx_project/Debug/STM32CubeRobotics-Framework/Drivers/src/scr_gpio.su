@@ -1,5 +1,5 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-scr_dependancy.h:60:13:void throwException(std::__cxx11::string)	16	static
+scr_dependancy.h:69:13:void throwException(std::__cxx11::string)	16	static
 scr_gpio.cpp:5:6:void scr::GPIO::write(scr::logic_level)	16	static
 scr_gpio.cpp:15:13:scr::logic_level scr::GPIO::read()	16	static
 scr_gpio.cpp:19:6:void scr::GPIO::toggle()	16	static
