@@ -5,11 +5,8 @@ scr_gpio.h:17:9:scr::GPIO::GPIO(GPIO_TypeDef*, uint16_t)	24	static
 scr_gpio.h:21:9:scr::GPIO::~GPIO()	16	static
 scr_main.cpp:21:6:void setup()	4	static
 scr_main.cpp:25:6:void loop0()	8	static
-scr_main.cpp:46:6:void loop1()	24	static
-scr_usart.h:74:16:scr::USART& scr::USART::operator<<(const T&) [with T = char]	256	static
-scr_usart.h:74:16:scr::USART& scr::USART::operator<<(const T&) [with T = int]	256	static
-scr_usart.h:74:16:scr::USART& scr::USART::operator<<(const T&) [with T = float]	256	static
-scr_usart.h:74:16:scr::USART& scr::USART::operator<<(const T&) [with T = char [3]]	256	static
-scr_main.cpp:94:1:void __static_initialization_and_destruction_0(int, int)	16	static
-scr_main.cpp:94:1:cpp)	8	static
-scr_main.cpp:94:1:cpp)	8	static
+scr_main.cpp:46:6:void loop1()	32	static
+scr_usart.h:77:13:scr::USART& operator<<(scr::USART&, const T&) [with T = std::__cxx11::basic_string<char>]	256	static
+scr_main.cpp:106:1:void __static_initialization_and_destruction_0(int, int)	16	static
+scr_main.cpp:106:1:cpp)	8	static
+scr_main.cpp:106:1:cpp)	8	static

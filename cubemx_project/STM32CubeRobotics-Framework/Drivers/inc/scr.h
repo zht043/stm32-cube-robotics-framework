@@ -22,6 +22,7 @@ void operator delete[](void * ptr);
 
 namespace scr {
 	extern int new_cnt;
+	extern std::string endl;
 }
 
 #endif

@@ -45,10 +45,22 @@ void loop0(void) {
 
 void loop1(void) {
 
-    for (int i=0; i<10; ++i){
-        serial << 'c' << 123 << 12.31f << "\n\r";
-    }
-    while(1);
+
+    //string input;
+    //input = serial.receive(3);
+    //byte_t in_byte = serial.receive();
+
+/*
+	char str[10];
+	serial.receive(str, 3, Interrupt);
+	while(serial.get_rx_status() != Completed);
+    serial << str << scr::endl;
+*/
+
+    string line = serial.readLine();
+    serial << line << scr::endl;
+
+
 
 /*
 	vector<int> vec;

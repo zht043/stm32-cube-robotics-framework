@@ -1,15 +1,24 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
 scr_dependancy.h:70:13:void throwException(std::__cxx11::string)	16	static
-scr_usart.h:45:36:UART_HandleTypeDef* scr::USART::get_huartx()	16	static
-scr_usart.h:65:21:void scr::USART::set_tx_status(scr::periph_status)	16	static
-scr_usart.cpp:19:1:scr::USART::USART(UART_HandleTypeDef*, uint32_t, uint32_t)	24	static
-scr_usart.cpp:30:1:scr::USART::~USART()	16	static
-scr_usart.cpp:37:6:void scr::USART::hal_transmit(char*, scr::periph_mode)	144	static
-scr_usart.cpp:91:6:void scr::USART::transmit(std::__cxx11::string&, scr::periph_mode)	24	static
-scr_usart.cpp:96:6:void scr::USART::transmit(char*, scr::periph_mode)	24	static
-scr_usart.cpp:100:6:void scr::USART::transmit(byte_t, scr::periph_mode)	16	static
-scr_usart.cpp:106:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	24	static
-scr_usart.cpp:116:13:void usart_transmit_completed_interrupt_task(scr::USART*)	16	static
-scr_usart.cpp:118:1:void __static_initialization_and_destruction_0(int, int)	16	static
-scr_usart.cpp:118:1:cpp)	8	static
-scr_usart.cpp:118:1:cpp)	8	static
+scr_usart.h:62:36:UART_HandleTypeDef* scr::USART::get_huartx()	16	static
+scr_usart.h:67:21:void scr::USART::set_tx_status(scr::periph_status)	16	static
+scr_usart.h:68:21:void scr::USART::set_rx_status(scr::periph_status)	16	static
+scr_usart.cpp:27:1:scr::USART::USART(UART_HandleTypeDef*, uint32_t, uint32_t)	24	static
+scr_usart.cpp:38:1:scr::USART::~USART()	16	static
+scr_usart.cpp:45:6:void scr::USART::hal_transmit(char*, scr::periph_mode)	144	static
+scr_usart.cpp:99:6:void scr::USART::transmit(std::__cxx11::string&, scr::periph_mode)	24	static
+scr_usart.cpp:104:6:void scr::USART::transmit(char*, scr::periph_mode)	24	static
+scr_usart.cpp:108:6:void scr::USART::transmit(byte_t, scr::periph_mode)	16	static
+scr_usart.cpp:114:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	24	static
+scr_usart.cpp:123:13:void usart_transmit_completed_interrupt_task(scr::USART*)	16	static
+scr_usart.cpp:128:6:void scr::USART::hal_receive(char*, uint16_t, scr::periph_mode)	144	static
+scr_usart.cpp:185:13:std::__cxx11::string scr::USART::receive(uint16_t)	40	static
+scr_usart.cpp:192:6:void scr::USART::receive(char*, uint16_t, scr::periph_mode)	24	static
+scr_usart.cpp:196:8:byte_t scr::USART::receive()	16	static
+scr_usart.cpp:202:6:void HAL_UART_RxCpltCallback(UART_HandleTypeDef*)	24	static
+scr_usart.cpp:211:13:void usart_receive_completed_interrupt_task(scr::USART*)	16	static
+scr_usart.cpp:217:19:const string scr::USART::readWord()	80	static
+scr_usart.cpp:232:19:const string scr::USART::readLine()	80	static
+scr_usart.cpp:246:1:void __static_initialization_and_destruction_0(int, int)	24	static
+scr_usart.cpp:246:1:cpp)	8	static
+scr_usart.cpp:246:1:cpp)	8	static

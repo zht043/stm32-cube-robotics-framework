@@ -1,6 +1,13 @@
 #include "scr_usart.h"
 #include "scr_systick.h"
 
+#ifdef HAL_UART_MODULE_ENABLED
+
+
+namespace scr {
+    std::string endl("\n\r");
+}
+
 using namespace scr;
 
 /*==================================================================*/
@@ -14,6 +21,7 @@ using namespace scr;
 uint32_t num_usarts = 0;
 USART* active_usarts[Max_Num_USARTs];
 /*==================================================================*/
+
 
 
 USART::USART(UART_HandleTypeDef *huartx, uint32_t tx_buffer_size, uint32_t rx_buffer_size) {
@@ -87,7 +95,7 @@ void USART::hal_transmit(char* str_ptr, periph_mode mode) {
 }
 
 
-/* */
+
 void USART::transmit(std::string& str, periph_mode mode) {
 	hal_transmit((char*)str.c_str(), mode);
 }
@@ -112,7 +120,129 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
 	}
 }
 
-
 __weak void usart_transmit_completed_interrupt_task(USART* instance) {
     UNUSED(instance);
 }
+
+
+void USART::hal_receive(char* str_ptr, uint16_t num_bytes, periph_mode mode) {
+    if(rx_status == NotReady) return;
+
+    HAL_StatusTypeDef status;
+    if(mode == Polling) {
+        
+	    memset(str_ptr, 0, strlen(str_ptr));
+        status = HAL_UART_Receive(huartx, (uint8_t*)(str_ptr), num_bytes, rx_timeout);
+        if(status == HAL_BUSY) rx_status = InProgress;
+        else if(status == HAL_TIMEOUT) {
+            rx_status = TimeOut;
+
+            //Unlock Usart
+            __HAL_UNLOCK(huartx);
+            huartx->gState = HAL_UART_STATE_READY;
+            
+            throwException("usart_receive Polling | TimeOut");
+        }
+        else if(status == HAL_ERROR) {
+            rx_status = Error;
+            throwException("usart_receive Polling | Error");
+        }
+        else if(status == HAL_OK) {
+            rx_status = Completed;
+        }
+    }
+
+    // Make sure interrupt is enabled within CubeMx software
+    // Not recommended, input data size has to be exact, or weird behavior might occur 
+    if(mode == Interrupt) {
+        //check if the previous receiption is completed
+        if(rx_status == InProgress) return;
+        memset(str_ptr, 0, strlen(str_ptr));
+        status = HAL_UART_Receive_IT(huartx, (uint8_t*)str_ptr, num_bytes);
+        if(status == HAL_ERROR) {
+            rx_status = Error;
+            throwException("usart_receive interrupt | Error");
+            return;
+        }
+        rx_status = InProgress;
+    }
+
+    // Make sure DMA and interrupt are both enabled within CubeMx software
+    if(mode == DMA) {
+        //check if the previous reception is completed
+        if(rx_status == InProgress) return;
+        memset(str_ptr, 0, strlen(str_ptr));
+        status = HAL_UART_Receive_DMA(huartx, (uint8_t*)str_ptr, num_bytes);
+        if(status == HAL_ERROR) {
+            rx_status = Error;
+            throwException("usart_receive DMA | Error");
+            return;
+        }
+        rx_status = InProgress;
+    }
+}
+
+std::string USART::receive(uint16_t num_bytes) {
+    hal_receive(rx_buffer, num_bytes, Polling);
+    if(rx_status == Completed) 
+        return std::string(rx_buffer);
+    else return ""; // if error occurs
+}
+
+void USART::receive(char* buffer_ptr, uint16_t num_bytes, periph_mode mode) {
+    hal_receive(buffer_ptr, num_bytes, mode);
+}
+
+byte_t USART::receive(void) {
+    hal_receive(rx_buffer, 1, Polling);
+    if(rx_status == Completed) return (byte_t)rx_buffer[0];
+    else return 0; // if error occurs
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+    for(uint32_t i = 0; i < num_usarts; i++) {
+		if(active_usarts[i]->get_huartx() == huart) {
+            usart_receive_completed_interrupt_task(active_usarts[i]);
+            active_usarts[i]->set_rx_status(Completed);
+		}
+	}
+}
+
+__weak void usart_receive_completed_interrupt_task(USART* instance) {
+    UNUSED(instance);
+}
+
+
+
+const std::string USART::readWord(void) {
+    uint32_t t0 = millis();
+
+    int i = 0;
+    char str[USART_Default_Rx_BufferSize];
+	str[i] = (char)(this->receive());
+	while(str[i] != ' ' && str[i] != '\r' && str[i] != '\n') {
+		str[++i] = (char)(this->receive());
+        if(millis() - t0 > USART_Default_RxTimeOut) break;
+    }
+	str[i] = '\0';
+    const std::string rtn(str);
+    return rtn;
+}
+
+const std::string USART::readLine(void) {
+	
+    uint32_t t0 = millis();
+
+    int i = 0;
+    char str[USART_Default_Rx_BufferSize];
+	str[i] = (char)(this->receive());
+	while(str[i] != '\r' && str[i] != '\n') {
+		str[++i] = (char)(this->receive());
+        if(millis() - t0 > USART_Default_RxTimeOut) break;
+    }
+	str[i] = '\0';
+    const std::string rtn(str);
+    return rtn;
+}
+
+#endif
