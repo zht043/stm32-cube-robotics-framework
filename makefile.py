@@ -186,10 +186,11 @@ class makefile:
 
     def add_src_inc(self, src_dir):
         inc, src = traverse(src_dir)
+        
         if os.path.abspath(src_dir) == os.path.abspath('.'):
             src_dir = '.'
 
-        inc = map(lambda s: s[:s.rfind('/')] if '/' in s else '', src)
+        inc = map(lambda s: s[:s.rfind('/')] if '/' in s else '', inc)
         inc = set(map(lambda s: '-I%s/%s' % (src_dir, s), inc))
         self.env['C_INCLUDES'] = list(map(lambda s: '-I./%s' % s[2:],
                                      self.env['C_INCLUDES'].strip().split()))

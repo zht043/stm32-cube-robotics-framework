@@ -5,7 +5,7 @@ def traverse(curr_dir):
     inc, src = [], []
     for curr_root, dirs, files in os.walk(curr_dir):
         for file in files:
-            if file.endswith(".c"):
+            if file.endswith(".c") or file.endswith(".cpp"):
                 src.append(os.path.relpath(curr_root, curr_dir) + '/' + file)
             elif file.endswith(".h"):
                 inc.append(os.path.relpath(curr_root, curr_dir) + '/' + file)
