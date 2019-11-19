@@ -658,7 +658,7 @@ uint32_t osThreadEnumerate (osThreadId_t *thread_array, uint32_t array_items) {
     vTaskSuspendAll();
 
     count = uxTaskGetNumberOfTasks();
-    task  = pvPortMalloc (count * sizeof(TaskStatus_t));
+    task  = (TaskStatus_t *)pvPortMalloc (count * sizeof(TaskStatus_t));
 
     if (task != NULL) {
       count = uxTaskGetSystemState (task, count, NULL);
@@ -884,7 +884,7 @@ osTimerId_t osTimerNew (osTimerFunc_t func, osTimerType_t type, void *argument, 
 
   if (!IS_IRQ() && (func != NULL)) {
     /* Allocate memory to store callback function and argument */
-    callb = pvPortMalloc (sizeof(TimerCallback_t));
+    callb = (TimerCallback_t *) pvPortMalloc (sizeof(TimerCallback_t));
 
     if (callb != NULL) {
       callb->func = func;
@@ -1059,7 +1059,7 @@ osEventFlagsId_t osEventFlagsNew (const osEventFlagsAttr_t *attr) {
     }
 
     if (mem == 1) {
-      hEventGroup = xEventGroupCreateStatic (attr->cb_mem);
+      hEventGroup = xEventGroupCreateStatic ((StaticEventGroup_t *)attr->cb_mem);
     }
     else {
       if (mem == 0) {
@@ -1251,10 +1251,10 @@ osMutexId_t osMutexNew (const osMutexAttr_t *attr) {
 
       if (mem == 1) {
         if (rmtx != 0U) {
-          hMutex = xSemaphoreCreateRecursiveMutexStatic (attr->cb_mem);
+          hMutex = xSemaphoreCreateRecursiveMutexStatic ((StaticQueue_t *)attr->cb_mem);
         }
         else {
-          hMutex = xSemaphoreCreateMutexStatic (attr->cb_mem);
+          hMutex = xSemaphoreCreateMutexStatic ((StaticQueue_t*)attr->cb_mem);
         }
       }
       else {
@@ -1610,7 +1610,7 @@ osMessageQueueId_t osMessageQueueNew (uint32_t msg_count, uint32_t msg_size, con
     }
 
     if (mem == 1) {
-      hQueue = xQueueCreateStatic (msg_count, msg_size, attr->mq_mem, attr->cb_mem);
+      hQueue = xQueueCreateStatic (msg_count, msg_size, (uint8_t *)attr->mq_mem, (StaticQueue_t *)attr->cb_mem);
     }
     else {
       if (mem == 0) {

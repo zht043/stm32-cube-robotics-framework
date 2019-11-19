@@ -160,7 +160,9 @@ configIDLE_TASK_NAME in FreeRTOSConfig.h. */
 																										\
 		/* listGET_OWNER_OF_NEXT_ENTRY indexes through the list, so the tasks of						\
 		the	same priority get an equal share of the processor time. */									\
-		listGET_OWNER_OF_NEXT_ENTRY( pxCurrentTCB, &( pxReadyTasksLists[ uxTopPriority ] ) );			\
+		void * temp = NULL;																				\
+		listGET_OWNER_OF_NEXT_ENTRY( temp, &( pxReadyTasksLists[ uxTopPriority ] ) );					\
+		pxCurrentTCB = ( TCB_t * ) temp;																\
 		uxTopReadyPriority = uxTopPriority;																\
 	} /* taskSELECT_HIGHEST_PRIORITY_TASK */
 
@@ -3593,7 +3595,9 @@ static void prvCheckTasksWaitingTermination( void )
 
 		if( listCURRENT_LIST_LENGTH( pxList ) > ( UBaseType_t ) 0 )
 		{
-			listGET_OWNER_OF_NEXT_ENTRY( pxFirstTCB, pxList );
+			void * temp = NULL;
+			listGET_OWNER_OF_NEXT_ENTRY( temp, pxList );
+			pxFirstTCB = (TCB_t *) temp;
 
 			/* Populate an TaskStatus_t structure within the
 			pxTaskStatusArray array for each task that is referenced from
@@ -3601,7 +3605,9 @@ static void prvCheckTasksWaitingTermination( void )
 			meaning of each TaskStatus_t structure member. */
 			do
 			{
-				listGET_OWNER_OF_NEXT_ENTRY( pxNextTCB, pxList );
+				temp = NULL;
+				listGET_OWNER_OF_NEXT_ENTRY( temp, pxList );
+				pxNextTCB = (TCB_t *) temp;
 				vTaskGetInfo( ( TaskHandle_t ) pxNextTCB, &( pxTaskStatusArray[ uxTask ] ), pdTRUE, eState );
 				uxTask++;
 			} while( pxNextTCB != pxFirstTCB );

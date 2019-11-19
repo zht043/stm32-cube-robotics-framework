@@ -127,16 +127,16 @@ int main(void)
   /* definition and creation of defaultTask */
   const osThreadAttr_t defaultTask_attributes = {
     .name = "defaultTask",
-    .priority = (osPriority_t) osPriorityNormal,
-    .stack_size = 128
+    .stack_size = 128,
+    .priority = (osPriority_t) osPriorityNormal
   };
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* definition and creation of myTask02 */
   const osThreadAttr_t myTask02_attributes = {
     .name = "myTask02",
-    .priority = (osPriority_t) osPriorityLow,
-    .stack_size = 128
+    .stack_size = 128,
+    .priority = (osPriority_t) osPriorityLow
   };
   myTask02Handle = osThreadNew(StartTask02, NULL, &myTask02_attributes);
 
